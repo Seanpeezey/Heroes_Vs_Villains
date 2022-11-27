@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import serializers
-from super_types.serializers import SuperTypeSerializer
+from supers.serializers import SuperSerializer
 from supers.models import Supers
 
 
@@ -11,5 +11,5 @@ from supers.models import Supers
 @api_view(['GET'])
 def supers_list(request):
     supers=Supers.objects.all()
-    serializer = SuperTypeSerializer(supers, many=True)
+    serializer = SuperSerializer(supers, many=True)
     return Response(serializer.data)
